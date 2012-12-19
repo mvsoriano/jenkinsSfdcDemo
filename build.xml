@@ -1,0 +1,48 @@
+<project name="jenkinsSfdcDemo Ant tasks" default="describeMetadata" basedir="." xmlns:sf="antlib:com.salesforce">
+
+    <property file="build.properties"/>
+    <property environment="env"/>
+    
+    
+    <target name="deploy">
+      <!-- Deploy to Dev org -->
+      <sf:deploy username="${sf.username}" 
+                 password="${sf.password}" 
+                 serverurl="${sf.serverurl}"
+                 deployRoot="${sf.deployroot}"
+                 checkOnly="${sf.checkonly}"
+                 allowMissingFiles="false" 
+                 logType="Detail" 
+                 runAllTests="${sf.runalltests}"
+                 autoUpdatePackage="false"/>
+    </target>
+
+    <!-- Retrieve the information of all items of a particular metadata type -->
+    <target name="listMetadata">
+      <mkdir dir="listMetadata"/>
+      <sf:listMetadata username="${sf.username}" 
+                       password="${sf.password}" 
+                       serverurl="${sf.serverurl}" 
+                       metadataType="${sf.metadataType}"
+                       resultFilePath="listMetadata/${sf.metadataType}.log"
+                       folder="${sf.folder}"/>
+    </target>
+
+    <!-- Retrieve the information on all supported metadata type -->
+    <target name="describeMetadata">
+      <sf:describeMetadata username="${sf.username}"
+                           password="${sf.password}"
+                           serverurl="${sf.serverurl}"/>
+    </target>
+    
+    <target name="retrieve">
+      <!-- Retrieve the contents into another directory -->
+      <sf:retrieve username="${sf.username}"
+                   password="${sf.password}"
+                   serverurl="${sf.serverurl}"
+                   pollWaitMillis="${sf.pollWaitmillis}"
+                   maxPoll="${sf.maxpoll}"
+                   retrieveTarget="src"
+                   unpackaged="src/package.xml"/>
+    </target>
+</project>
