@@ -1,3 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-    <version>26.0</version>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>Metadata</members>
+        <name>CustomApplication</name>
+    </types>
+    <types>
+        <members>Destructive_Changes_Poc__c</members>
+        <members>Metadata__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>Destructive_Changes_Poc__c</members>
+        <members>Metadata__c</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
+        <members>Admin</members>
+        <members>Metadata Admin</members>
+        <name>Profile</name>
+    </types>
+    <version>25.0</version>
 </Package>
